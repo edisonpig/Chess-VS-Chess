@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
       propertyPath: m_Name
-      value: Knight BR
+      value: Knight BR Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
+      propertyPath: m_TagString
+      value: black
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
       propertyPath: m_RootOrder
@@ -61,3 +65,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ce80d7520e4604c6faaad086dc1a7590, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
+--- !u!1 &6023821664194263521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
+  m_PrefabInstance: {fileID: 6023821664194166593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &497641895080392433
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023821664194263521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5110062
+  m_Height: 2.03
+  m_Direction: 1
+  m_Center: {x: 0.06988545, y: 0.8493853, z: -0.0000004172325}

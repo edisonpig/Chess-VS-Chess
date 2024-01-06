@@ -12,8 +12,7 @@ public class SpellCooldown : MonoBehaviour
     private Image imageCooldown;
     [SerializeField]
     private TMP_Text textCooldown;
-    [SerializeField]
-    private Image imageEdge;
+    
 
     //variable for looking after the cooldown
     private bool isCoolDown = false;
@@ -23,7 +22,7 @@ public class SpellCooldown : MonoBehaviour
     void Start()
     {
         textCooldown.gameObject.SetActive(false);
-        imageEdge.gameObject.SetActive(false);
+        
         imageCooldown.fillAmount = 0.0f;
     }
 
@@ -48,7 +47,7 @@ public class SpellCooldown : MonoBehaviour
         {
             isCoolDown = false;
             textCooldown.gameObject.SetActive(false);
-            imageEdge.gameObject.SetActive(false);
+            
             imageCooldown.fillAmount = 0.0f;
         }
         else
@@ -56,7 +55,7 @@ public class SpellCooldown : MonoBehaviour
             textCooldown.text = Mathf.RoundToInt(cooldownTimer).ToString();
             imageCooldown.fillAmount = cooldownTimer / cooldownTime;
 
-            imageEdge.transform.localEulerAngles = new Vector3(0, 0, 360.0f * (cooldownTimer / cooldownTime));
+            
         }
 
     }
@@ -75,7 +74,7 @@ public class SpellCooldown : MonoBehaviour
             textCooldown.text = Mathf.RoundToInt(cooldownTimer).ToString();
             imageCooldown.fillAmount = 1.0f;
 
-            imageEdge.gameObject.SetActive(true);
+            
             return true; 
         }
     }

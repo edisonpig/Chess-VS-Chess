@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
       propertyPath: m_Name
-      value: Rook BR
+      value: Rook BR Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
+      propertyPath: m_TagString
+      value: black
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
       propertyPath: m_RootOrder
@@ -61,3 +65,22 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ce80d7520e4604c6faaad086dc1a7590, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
+--- !u!1 &3907835099618922730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
+  m_PrefabInstance: {fileID: 3907835099618956874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4473969299971419255
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3907835099618922730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.50819767
+  m_Height: 2.1
+  m_Direction: 1
+  m_Center: {x: 0.00000032782555, y: 0.8086491, z: -0.00000047683716}
