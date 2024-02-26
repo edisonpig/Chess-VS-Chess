@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private Image hpBar;
+    [SerializeField] private GameObject AIWinText;
+    [SerializeField] private GameObject EndUI;
 
 
     // Start is called before the first frame update
@@ -72,8 +74,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 private void HealthCheck(){
-    if(Health<0){
+    if(Health<=0){
         Debug.Log("health0 - player");
+        Time.timeScale=0f;
+        Health=2;
+        EndUI.SetActive(true);
+        AIWinText.SetActive(true);
     }
 }
     private void PlayerMove(){

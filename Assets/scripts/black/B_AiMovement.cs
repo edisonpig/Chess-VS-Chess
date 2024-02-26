@@ -41,6 +41,9 @@ public float spawnCD = 4.0f;
     [Header("Health")]
     [SerializeField] private Image hpBar;
 
+    [SerializeField] private GameObject PlayerWinText;
+    [SerializeField] private GameObject EndUI;
+
 
 
 
@@ -61,6 +64,19 @@ public float spawnCD = 4.0f;
         PlayerSpawn();
 
     }
+    void FixedUpdate()
+    {
+      HealthCheck();  
+    }
+    private void HealthCheck(){
+    if(Health<=0){
+        Debug.Log("health0 - ai");
+        Time.timeScale=0f;
+        Health=2;
+        EndUI.SetActive(true);
+        PlayerWinText.SetActive(true);
+    }
+}
 
     private void PlayerMove(){
         
