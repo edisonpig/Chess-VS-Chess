@@ -12,6 +12,10 @@ PrefabInstance:
       value: Bishop BR Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3ebcae0daf8394e548da469833b04106, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ebcae0daf8394e548da469833b04106, type: 3}
       propertyPath: m_TagString
       value: black
       objectReference: {fileID: 0}
@@ -70,6 +74,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3ebcae0daf8394e548da469833b04106, type: 3}
   m_PrefabInstance: {fileID: 5578443071429351255}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &6832190240682564552
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578443071429317111}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!136 &8441342826274788226
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,9 +98,26 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5578443071429317111}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.50819767
   m_Height: 2.21
   m_Direction: 1
   m_Center: {x: -0.00000008940697, y: 1.026538, z: 0.00000047683716}
+--- !u!114 &-680602547170721513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578443071429317111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183cd773dbb9e8c4ca215c94c8ccb703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  prevmovement: 0
+  movement: {x: 0, y: 0, z: 0}
+  arrivePoint: 1
+  rb: {fileID: 6832190240682564552}

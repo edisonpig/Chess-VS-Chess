@@ -51,6 +51,7 @@ public class B_BishopRight : MonoBehaviour
                 movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z+2f);
             if(transform.position.z>=13||prevmovement){
                movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z-2f);
+               Debug.Log("turn");
                 prevmovement=true;
             }
             movement = new Vector3 ((float)Math.Round((double)movement.x,2),0,(float)Math.Round((double)movement.z,2));
@@ -63,11 +64,11 @@ public class B_BishopRight : MonoBehaviour
         }else{
             timer+=Time.deltaTime;
         }
-        if(((int)Math.Round((double)movement.x,2)==(int)Math.Round((double)transform.position.x,2))&&((int)Math.Round((double)movement.z,2)==(int)Math.Round((double)transform.position.z,2))){
+        if((Math.Round((double)movement.x,1)==Math.Round((double)transform.position.x,1))&&(Math.Round((double)movement.z,1)==Math.Round((double)transform.position.z,1))){
             transform.position=movement;
             arrivePoint= true;
             
-            Debug.Log("Requirements met bishopleft");
+            Debug.Log("Requirements met B_bishopleft");
         }else if(movement.x!=0f&&movement.z!=0f){
             arrivePoint=false;
         }
@@ -80,12 +81,7 @@ if(transform.position.x<0){
         
     
     }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag=="black"){
-            Destroy(gameObject);
-        }
-    }
+  
 
 
 }

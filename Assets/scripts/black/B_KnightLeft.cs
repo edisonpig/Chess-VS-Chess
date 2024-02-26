@@ -37,14 +37,14 @@ public class B_KnightLeft : MonoBehaviour
                     check=1;
                 }
                 if(check==0){
-                    movement = new Vector3(transform.position.x-4f,transform.position.y,transform.position.z-2f);
+                    movement = new Vector3(transform.position.x-4f,0,transform.position.z-2f);
                     if(movement.z<-1){
-                        movement = new Vector3(transform.position.x-4f,transform.position.y,transform.position.z+2f);
+                        movement = new Vector3(transform.position.x-4f,0,transform.position.z+2f);
                     }
                 }else{
-                   movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z-4f); 
+                   movement = new Vector3(transform.position.x-2f,0,transform.position.z-4f); 
                    if(movement.z<-1){
-                        movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z+4f);
+                        movement = new Vector3(transform.position.x-2f,0,transform.position.z+4f);
                     }
                 }
                 CountTimes++;
@@ -57,14 +57,14 @@ public class B_KnightLeft : MonoBehaviour
                     check=1;
                 }
                 if(check==0){
-                    movement = new Vector3(transform.position.x-4f,transform.position.y,transform.position.z+2f);
+                    movement = new Vector3(transform.position.x-4f,0,transform.position.z+2f);
                     if(movement.z>14){
-                        movement = new Vector3(transform.position.x-4f,transform.position.y,transform.position.z-2f);
+                        movement = new Vector3(transform.position.x-4f,0,transform.position.z-2f);
                     }
                 }else{
-                   movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z+4f); 
+                   movement = new Vector3(transform.position.x-2f,0,transform.position.z+4f); 
                    if(movement.z>14){
-                        movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z-4f);
+                        movement = new Vector3(transform.position.x-2f,0,transform.position.z-4f);
                     }
                 }
                  CountTimes--;
@@ -91,7 +91,7 @@ public class B_KnightLeft : MonoBehaviour
             transform.position=movement;
             arrivePoint= true;
             
-            Debug.Log("Requirements met knightright");
+            Debug.Log("Requirements met B_knightright");
         }else if(movement.x!=0f&&movement.z!=0f){
             arrivePoint=false;
         }
@@ -102,10 +102,5 @@ if(transform.position.x<0){
 
         
     }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag=="black"){
-            Destroy(gameObject);
-        }
-    }
+   
 }

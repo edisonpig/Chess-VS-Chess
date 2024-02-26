@@ -48,10 +48,15 @@ public class RookMove : MonoBehaviour
 
 
     }
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="black"){
+         if(other.gameObject.tag=="black"){
+            Debug.Log("rook hit");
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
-    }
+        
+
+
+}
 }

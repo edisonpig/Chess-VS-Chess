@@ -12,6 +12,10 @@ PrefabInstance:
       value: KnightRight
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
       propertyPath: m_TagString
       value: white
       objectReference: {fileID: 0}

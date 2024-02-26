@@ -10,6 +10,10 @@ using UnityEngine.UI;
 public class B_AiMovement : MonoBehaviour
 {
 [Header("Player")]
+
+    public static int Health = 2;
+
+    public float moveCD = 4f;
     public bool movementOnGoing = true;
     public Vector3 movement;
     public Vector3 desiredPosition;
@@ -18,6 +22,11 @@ public class B_AiMovement : MonoBehaviour
 
 
 [Header("Chess")]
+public bool spawnavailable =false;
+
+public float spawnCD = 4.0f;
+
+
     [SerializeField] private GameObject Pawn=null;
     public float pawnCastCD = 1.4f;
     [SerializeField] private GameObject BishopLeft=null;
@@ -29,45 +38,37 @@ public class B_AiMovement : MonoBehaviour
     [SerializeField] private GameObject Rook=null;
     public float rookCastCD = 2.5f;
 
+    [Header("Health")]
+    [SerializeField] private Image hpBar;
 
 
-[Header("UI items for Spell Cooldown")]
-    
-    [SerializeField] private Image pawnImageCD;
-    [SerializeField] private TMP_Text pawntxtCD; 
-    
 
-    [SerializeField] private Image bishopImageCD;
-    [SerializeField] private TMP_Text bishoptxtCD;
-
-
-    [SerializeField] private Image knightImageCD;
-    [SerializeField] private TMP_Text knighttxtCD;
-
-    [SerializeField] private Image rookImageCD;
-    [SerializeField] private TMP_Text rooktxtCD;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        desiredPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        moveCD-=Time.deltaTime;
         PlayerMove();
         CoolDown();
+        if(moveCD>0&&transform.position.z%1==0)
         PlayerSpawn();
 
     }
 
     private void PlayerMove(){
-if(movementOnGoing){
-            if(Input.GetKeyDown(KeyCode.RightArrow)){
+        
+if(movementOnGoing && moveCD<=0){
+    int check = Random.Range(0,2);
+            if(check==0){
             movement = new Vector3(0,0,-2f);
-        }if(Input.GetKeyDown(KeyCode.LeftArrow)){
+        }else if(check==1){
             movement = new Vector3(0,0,2f);
         }
         movementOnGoing=false;
@@ -79,7 +80,7 @@ if(movementOnGoing){
         }if(desiredPosition.z>14){
             desiredPosition.z=14;
         }
-        
+        moveCD = 6f;
         }
         smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
          transform.position = smoothPosition;
@@ -87,18 +88,21 @@ if(movementOnGoing){
         if(transform.position==desiredPosition){
         movement = new Vector3(0,0,0);
         if(transform.position.z%1==0){ }else{
-            Vector3 adjust = new Vector3 (transform.position.x, transform.position.y,(float)Math.Round((double)transform.position.z));
+            Vector3 adjust = new Vector3 (transform.position.x, 0,(float)Math.Round((double)transform.position.z));
             transform.position = adjust;
-            Debug.Log(transform.position.z);
+            
+        movementOnGoing = true;
+        
         }
         
-        movementOnGoing = true;
         }
+        
+        
     }
 
     private void PlayerSpawn(){
 
-            if(Input.GetKeyDown(KeyCode.Q)){
+        /*    if(Input.GetKeyDown(KeyCode.Q)){
                 BishopSpawn();
             }
             
@@ -113,8 +117,38 @@ if(movementOnGoing){
              if(Input.GetKeyDown(KeyCode.Space)){
                 PawnSpawn();
                 
+            }*/ 
+            if(spawnCD>=0){
+                spawnCD-= Time.deltaTime;
+            }else if(spawnavailable){
+            int check = Random.Range(0,4);
+            switch(check){
+                case 0:
+                BishopSpawn();
+                spawnCD=4.0f;
+                break;
+                case 1:
+                KnightSpawn();
+                spawnCD=4.0f;
+                break;
+                case 2:
+                RookSpawn();
+                spawnCD=4.0f;
+                break;
+                case 3:
+                PawnSpawn();
+                spawnCD=4.0f;
+                break;
             }
-        }
+            spawnavailable=false;
+            }else{
+                spawnavailable=true;
+            
+            }
+            }
+
+
+        
 
 
     void CoolDown(){
@@ -122,33 +156,21 @@ if(movementOnGoing){
 
         if(bishopCastCD>=0){
             bishopCastCD-=Time.deltaTime;
-            bishoptxtCD.text = Mathf.RoundToInt(bishopCastCD).ToString();
-            bishopImageCD.fillAmount = bishopCastCD / 2.0f;
-        } else{
-            bishoptxtCD.gameObject.SetActive(false);
-            bishopImageCD.fillAmount = 0.0f;
+            
         }
 
 
         //Knight
         if(knightCastCD>=0){
             knightCastCD-=Time.deltaTime;
-            knighttxtCD.text = Mathf.RoundToInt(knightCastCD).ToString();
-            knightImageCD.fillAmount = knightCastCD / 1.8f;
-        } else{
-            knighttxtCD.gameObject.SetActive(false);
-            knightImageCD.fillAmount = 0.0f;
+            
         }
 
 
         //Pawn
         if(pawnCastCD>=0){
             pawnCastCD-=Time.deltaTime;
-            pawntxtCD.text = Mathf.RoundToInt(pawnCastCD).ToString();
-            pawnImageCD.fillAmount = pawnCastCD / 1.4f;
-        } else{
-            pawntxtCD.gameObject.SetActive(false);
-            pawnImageCD.fillAmount = 0.0f;
+           
         }
 
         
@@ -158,11 +180,7 @@ if(movementOnGoing){
 
         if(rookCastCD>=0){
             rookCastCD-=Time.deltaTime;
-            rooktxtCD.text = Mathf.RoundToInt(rookCastCD).ToString();
-            rookImageCD.fillAmount = rookCastCD / 2.5f;
-        } else{
-            rooktxtCD.gameObject.SetActive(false);
-            rookImageCD.fillAmount = 0.0f;
+            
         }
         
 
@@ -176,25 +194,22 @@ public void BishopSpawn(){
         int check = Random.Range(0,2);
                  
                 if(check==0){
-                    Vector3 spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z+2f);
+                    Vector3 spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z+2f);
                         if(spawnPosition.z>14){
-                             spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z-2f);
+                             spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z-2f);
                             Instantiate(BishopRight,spawnPosition,transform.rotation);
                         }else
                     Instantiate(BishopLeft,spawnPosition,transform.rotation);
                 }
                 else if(check==1){
-                    Vector3 spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z-2f);
+                    Vector3 spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z-2f);
                     if(spawnPosition.z<0){
-                             spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z+2f);
+                             spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z+2f);
                             Instantiate(BishopLeft,spawnPosition,transform.rotation);
                         }else
                     Instantiate(BishopRight,spawnPosition,transform.rotation);
                 }
-                bishoptxtCD.gameObject.SetActive(true);
-                bishopCastCD=2.0f;
-                bishoptxtCD.text = Mathf.RoundToInt(bishopCastCD).ToString();
-                bishopImageCD.fillAmount = 1.0f;
+               
     }
 }
 
@@ -203,50 +218,41 @@ public void KnightSpawn(){
         int check = Random.Range(0,2);
                  
                 if(check==0){
-                    Vector3 spawnPosition = new Vector3(transform.position.x+4f,transform.position.y,transform.position.z+2f);
+                    Vector3 spawnPosition = new Vector3(transform.position.x-4f,0,transform.position.z+2f);
                     if(spawnPosition.z>14){
-                             spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z-2f);
+                             spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z-2f);
                             Instantiate(KnightRight,spawnPosition,transform.rotation);
                         }else
                     Instantiate(KnightLeft,spawnPosition,transform.rotation);
                 }
                 else if(check==1){
-                    Vector3 spawnPosition = new Vector3(transform.position.x+4f,transform.position.y,transform.position.z-2f);
+                    Vector3 spawnPosition = new Vector3(transform.position.x-4f,0,transform.position.z-2f);
                     if(spawnPosition.z<0){
-                             spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z+2f);
+                             spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z+2f);
                             Instantiate(KnightLeft,spawnPosition,transform.rotation);
                         }else
                     Instantiate(KnightRight,spawnPosition,transform.rotation);
                 }
-                knighttxtCD.gameObject.SetActive(true);
-                knightCastCD = 1.8f;
-                knighttxtCD.text = Mathf.RoundToInt(knightCastCD).ToString();
-                knightImageCD.fillAmount = 1.0f;
+                
                 
 }
 }
 
 public void RookSpawn(){
     if(rookCastCD<=0){
-        Vector3 spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z);
+        Vector3 spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z);
                 Instantiate(Rook,spawnPosition,transform.rotation);
 
-                rooktxtCD.gameObject.SetActive(true);
-                rookCastCD=2.5f;
-                rooktxtCD.text = Mathf.RoundToInt(rookCastCD).ToString();
-                rookImageCD.fillAmount = 1.0f;
+                
     }
 }
 
 public void PawnSpawn(){
     if(pawnCastCD<=0){
-        Vector3 spawnPosition = new Vector3(transform.position.x+2f,transform.position.y,transform.position.z);
+        Vector3 spawnPosition = new Vector3(transform.position.x-2f,0,transform.position.z);
                 Instantiate(Pawn,spawnPosition,transform.rotation);
 
-                pawntxtCD.gameObject.SetActive(true);
-                pawnCastCD = 1.4f;
-                pawntxtCD.text = Mathf.RoundToInt(pawnCastCD).ToString();
-                pawnImageCD.fillAmount = 1.0f;
+               
     }
 }
 
@@ -300,6 +306,23 @@ public void MoveRight(){
         }
 
     
+}
+
+void OnTriggerEnter(Collider other)
+{
+    if(other.gameObject.tag=="white"){
+            Debug.Log("AI hit ");
+            Destroy(other.gameObject);
+            LossHP(1);
+        }
+}
+
+public void LossHP(int hp){
+    Health-=hp;
+    hpBar.fillAmount = (float)Health/2.0f;
+}
+public void AddHP(int HP){
+    Health+=HP;
 }
    
 

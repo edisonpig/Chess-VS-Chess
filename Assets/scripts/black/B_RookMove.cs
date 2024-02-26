@@ -40,10 +40,5 @@ public class B_RookMove : MonoBehaviour
 
 
     }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag=="black"){
-            Destroy(gameObject);
-        }
-    }
+    
 }

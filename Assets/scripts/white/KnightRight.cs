@@ -16,6 +16,7 @@ public class KnightRight : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+
     
     // Start is called before the first frame update
     void Start()
@@ -103,9 +104,14 @@ if(transform.position.x>=14){
 
     void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.tag=="black"){
+         if(other.gameObject.tag=="black"){
+            Debug.Log("Knight Right hit");
+            Destroy(other.gameObject);
             Destroy(gameObject);
-        } 
-    }
+        }
+        
+
+
+}
    
 }

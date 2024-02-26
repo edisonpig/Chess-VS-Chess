@@ -12,6 +12,10 @@ PrefabInstance:
       value: Rook WR Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c5f20314b232248d3972665d64a42a3e, type: 3}
       propertyPath: m_TagString
       value: white
       objectReference: {fileID: 0}

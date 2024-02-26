@@ -99,8 +99,13 @@ if(transform.position.x>=14){
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="black"){
+         if(other.gameObject.tag=="black"){
+            Debug.Log("Knight Left hit");
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
-    }
+        
+
+
+}
 }

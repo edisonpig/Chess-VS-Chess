@@ -12,6 +12,10 @@ PrefabInstance:
       value: BishopLeft
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3ebcae0daf8394e548da469833b04106, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ebcae0daf8394e548da469833b04106, type: 3}
       propertyPath: m_TagString
       value: white
       objectReference: {fileID: 0}

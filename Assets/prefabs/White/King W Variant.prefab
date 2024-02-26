@@ -12,6 +12,10 @@ PrefabInstance:
       value: King W Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_TagString
       value: king
       objectReference: {fileID: 0}

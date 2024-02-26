@@ -96,17 +96,6 @@ if(transform.position.x<0){
             
             }
     }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag=="black"){
-           // Destroy(gameObject);
-            Debug.Log("hit");
-        }
-        if(other.gameObject.tag=="king"){
-           // Destroy(other);
-            Debug.Log("kill king");
-        }
-    }
-
+    
     
 }

@@ -83,9 +83,11 @@ if(transform.position.x>=14){
     void OnTriggerEnter(Collider other)
     {
          if(other.gameObject.tag=="black"){
+            Debug.Log("Bishop Left hit");
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        
     }
-
 
 }

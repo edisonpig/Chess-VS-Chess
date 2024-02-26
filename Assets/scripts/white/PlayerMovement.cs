@@ -9,6 +9,8 @@ using Random=UnityEngine.Random;
 public class PlayerMovement : MonoBehaviour
 {
 [Header("Player")]
+
+    public static int Health = 2;
     public bool movementOnGoing = true;
     public Vector3 movement;
     public Vector3 desiredPosition;
@@ -46,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Image rookImageCD;
     [SerializeField] private TMP_Text rooktxtCD;
 
+    [Header("Health")]
+    [SerializeField] private Image hpBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +66,16 @@ public class PlayerMovement : MonoBehaviour
         PlayerSpawn();
 
     }
+    void FixedUpdate()
+    {
+      HealthCheck();  
+    }
 
+private void HealthCheck(){
+    if(Health<0){
+        Debug.Log("health0 - player");
+    }
+}
     private void PlayerMove(){
 if(movementOnGoing){
             if(Input.GetKeyDown(KeyCode.RightArrow)){
@@ -88,7 +102,7 @@ if(movementOnGoing){
         if(transform.position.z%1==0){ }else{
             Vector3 adjust = new Vector3 (transform.position.x, transform.position.y,(float)Math.Round((double)transform.position.z));
             transform.position = adjust;
-            Debug.Log(transform.position.z);
+            
         }
         
         movementOnGoing = true;
@@ -299,6 +313,24 @@ public void MoveRight(){
         }
 
     
+}
+
+void OnTriggerEnter(Collider other)
+{
+    if(other.gameObject.tag=="black"){
+            Debug.Log("Player hit");
+            Destroy(other.gameObject);
+            LossHP(1);
+        }
+}
+
+public void LossHP(int HP){
+    Health-=HP;
+    hpBar.fillAmount = (float)Health/2.0f;
+}
+
+public void AddHP(int HP){
+    Health+=HP;
 }
    
 

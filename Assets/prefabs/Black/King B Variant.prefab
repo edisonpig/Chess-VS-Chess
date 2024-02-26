@@ -12,6 +12,10 @@ PrefabInstance:
       value: King B Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_TagString
       value: king
       objectReference: {fileID: 0}
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.75
+      value: 13.9240465
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -41,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.035975
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -70,6 +74,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9c7ba5185d28d475b902a82911b83e2c, type: 3}
   m_PrefabInstance: {fileID: 6621170088952624831}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &6356891271115369606
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621170088952721439}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!136 &8323890712468485249
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,9 +98,40 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6621170088952721439}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.53
   m_Height: 2.9071734
   m_Direction: 1
   m_Center: {x: 0.00000008940697, y: 1.4358169, z: -0.0000009834766}
+--- !u!114 &1767565336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621170088952721439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805720dfa74fdd845a4c26a2f911b2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveCD: 4
+  movementOnGoing: 1
+  movement: {x: 0, y: 0, z: 0}
+  desiredPosition: {x: 0, y: 0, z: 0}
+  smoothPosition: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.1
+  spawnavailable: 0
+  spawnCD: 4
+  Pawn: {fileID: 1240122469077274405, guid: 0f234f0157a73a442abbb61d20f7c394, type: 3}
+  pawnCastCD: 1.4
+  BishopLeft: {fileID: 5578443071429317111, guid: e26f6359c3923344bb073b2ce3a736c5, type: 3}
+  BishopRight: {fileID: 5578443071429317111, guid: e320606cbc3259e49b8856618bfc184c, type: 3}
+  bishopCastCD: 2
+  KnightLeft: {fileID: 6023821664194263521, guid: 7c6f3b2ddd88eab498bd5b5b07740702, type: 3}
+  KnightRight: {fileID: 6023821664194263521, guid: 8804aef06b5c51644a9863c0bb61ff1d, type: 3}
+  knightCastCD: 1.8
+  Rook: {fileID: 3907835099618922730, guid: 318ee41cba81d2a44871edbcb3f9828e, type: 3}
+  rookCastCD: 2.5
+  hpBar: {fileID: 0}

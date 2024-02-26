@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PawnMove : MonoBehaviour
 {
+    public float countDown = 6.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -14,12 +15,21 @@ public class PawnMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag=="black"){
+        if(countDown<0){
             Destroy(gameObject);
+        }else{
+            countDown-=Time.deltaTime;
         }
     }
+    void OnTriggerEnter(Collider other)
+    {
+         if(other.gameObject.tag=="black"){
+            Debug.Log("pawn hit");
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+        
+
+
+}
 }

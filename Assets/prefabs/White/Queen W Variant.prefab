@@ -12,6 +12,10 @@ PrefabInstance:
       value: Queen W Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4ed40abe3301f47969aa44350488c7d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4ed40abe3301f47969aa44350488c7d0, type: 3}
       propertyPath: m_TagString
       value: white
       objectReference: {fileID: 0}

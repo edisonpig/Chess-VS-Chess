@@ -12,6 +12,10 @@ PrefabInstance:
       value: Knight BR Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
       propertyPath: m_TagString
       value: black
       objectReference: {fileID: 0}
@@ -70,6 +74,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4b1b985d7c66d4cba91946bc280878ce, type: 3}
   m_PrefabInstance: {fileID: 6023821664194166593}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &3854582266175553864
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023821664194263521}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!136 &497641895080392433
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -78,9 +98,26 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6023821664194263521}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5110062
   m_Height: 2.03
   m_Direction: 1
   m_Center: {x: 0.06988545, y: 0.8493853, z: -0.0000004172325}
+--- !u!114 &5346809548192418281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023821664194263521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66f1cd1bcf954e4ea3f34beee8c89be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  movement: {x: 0, y: 0, z: 0}
+  CountTimes: 0
+  rb: {fileID: 3854582266175553864}
+  arrivePoint: 1
