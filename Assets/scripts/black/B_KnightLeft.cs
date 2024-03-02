@@ -17,6 +17,7 @@ public class B_KnightLeft : MonoBehaviour
     public bool arrivePoint = true;
 
     [SerializeField] private Rigidbody rb;
+    
 
     
     // Start is called before the first frame update
@@ -77,7 +78,11 @@ public class B_KnightLeft : MonoBehaviour
             }
             
            Vector3 direction = (movement - transform.position).normalized;
+           if(GameObject.Find("King B Variant").GetComponent<B_AiMovement>().lighting){
+            rb.velocity = direction*2.3f;
+           }else{
         rb.velocity = direction * 1.8f;
+           }
         arrivePoint=false;
 
             
@@ -102,5 +107,25 @@ if(transform.position.x<0){
 
         
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "hourglass"){
+            Debug.Log("hourglass cd buff");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().CooldownUpgrade();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "HP"){
+        Debug.Log("addhp");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().AddHP(1);
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "Lightning"){
+        Debug.Log("lightning");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
+        Destroy(other.gameObject);
+    }
    
+}
 }

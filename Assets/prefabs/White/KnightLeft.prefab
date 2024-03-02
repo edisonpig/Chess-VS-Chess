@@ -125,3 +125,7 @@ MonoBehaviour:
   CountTimes: 0
   rb: {fileID: -2643553196612705355}
   arrivePoint: 1
+  Effect: {fileID: 6354671664410606311, guid: 2bbbc213cc82c604f97206ec862c3247, type: 3}
+  CooldownBuffadd: {fileID: 9213275022293173455, guid: d70768460ffcb1646af3d64e39b18ddc, type: 3}
+  HPadd: {fileID: 5171115804453267747, guid: 7eeef2f585bbf1346973e2f02babfd0a, type: 3}
+  Lightningadd: {fileID: 7266286126213867744, guid: e38aad67ce56b8648be840642b810314, type: 3}

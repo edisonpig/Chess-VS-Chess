@@ -32,7 +32,11 @@ public class B_RookMove : MonoBehaviour
             
             }
             Vector3 direction = (movement - transform.position).normalized;
+        if(GameObject.Find("King B Variant").GetComponent<B_AiMovement>().lighting){
+            rb.velocity = direction*2.3f;
+           }else{
         rb.velocity = direction * 1.8f;
+           }
         timer=0;
         }else{
             timer+=Time.deltaTime;
@@ -40,5 +44,23 @@ public class B_RookMove : MonoBehaviour
 
 
     }
-    
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "hourglass"){
+            Debug.Log("hourglass cd buff");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().CooldownUpgrade();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "HP"){
+        Debug.Log("addhp");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().AddHP(1);
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "Lightning"){
+        Debug.Log("lightning");
+        GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
+        Destroy(other.gameObject);
+    }
+   
+}
 }

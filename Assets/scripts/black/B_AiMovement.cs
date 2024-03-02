@@ -11,7 +11,7 @@ public class B_AiMovement : MonoBehaviour
 {
 [Header("Player")]
 
-    public static int Health = 2;
+    public static int Health = 3;
 
     public float moveCD = 4f;
     public bool movementOnGoing = true;
@@ -25,18 +25,42 @@ public class B_AiMovement : MonoBehaviour
 public bool spawnavailable =false;
 
 public float spawnCD = 4.0f;
+public float spawnRecastCD = 4.0f;
 
 
     [SerializeField] private GameObject Pawn=null;
-    public float pawnCastCD = 1.4f;
+    public float pawnCastCD = 7f;
+    public static float pawnRecastCD = 7f;
+    public float pawnOriginalCastCD = 7f;
     [SerializeField] private GameObject BishopLeft=null;
     [SerializeField] private GameObject BishopRight=null;
-    public float bishopCastCD = 2.0f;
+    public float bishopCastCD = 4.0f;
+    public static float bishopRecastCD = 4.0f;
+    public float bishopOriginalCastCD = 4.0f;
     [SerializeField] private GameObject KnightLeft=null;
     [SerializeField] private GameObject KnightRight=null;
-    public float knightCastCD = 1.8f;
+    public float knightCastCD = 3f;
+    public static float knightRecastCD = 3f;
+    public float knightOriginalCastCD = 3f;
     [SerializeField] private GameObject Rook=null;
-    public float rookCastCD = 2.5f;
+    public float rookCastCD = 3.5f;
+     public static float rookRecastCD = 3.5f;
+    public float rookOriginalCastCD = 3.5f;
+    [Header("Collectives")]
+    //CooldownBuff = hourglass --> cooldown decrease
+    //strength = gem red --> chess hp +1
+    //lighting = lighting --> chess faster
+    public  float CooldownBuffCD=30f;
+    public  bool lighting = false;
+    public  float lightingCD = 20f;
+    public int CooldownBuffTimes = 0;
+
+    [SerializeField] private GameObject CooldownBuffIcon;
+    [SerializeField] private GameObject LightingIcon;
+
+    [SerializeField] private GameObject Effect;
+    [SerializeField] private GameObject CooldownBuffEffect;
+    [SerializeField] private  GameObject lightingEffect;
 
     [Header("Health")]
     [SerializeField] private Image hpBar;
@@ -60,8 +84,21 @@ public float spawnCD = 4.0f;
         moveCD-=Time.deltaTime;
         PlayerMove();
         CoolDown();
-        if(moveCD>0&&transform.position.z%1==0)
+        if(transform.position.z%1==0)
         PlayerSpawn();
+        if(CooldownBuffCD<30f){
+            CooldownBuffCD+=Time.deltaTime;
+            
+        }else if(CooldownBuffCD>30f){
+            CooldownDegrade();
+        }
+        if(lighting){
+            lightingCD-=Time.deltaTime;
+        }
+        if(lightingCD<0){
+            lighting=false;
+            lightingCD=20f;
+        }
 
     }
     void FixedUpdate()
@@ -72,7 +109,7 @@ public float spawnCD = 4.0f;
     if(Health<=0){
         Debug.Log("health0 - ai");
         Time.timeScale=0f;
-        Health=2;
+        Health=3;
         EndUI.SetActive(true);
         PlayerWinText.SetActive(true);
     }
@@ -141,19 +178,19 @@ if(movementOnGoing && moveCD<=0){
             switch(check){
                 case 0:
                 BishopSpawn();
-                spawnCD=4.0f;
+                spawnCD=spawnRecastCD;
                 break;
                 case 1:
                 KnightSpawn();
-                spawnCD=4.0f;
+                spawnCD=spawnRecastCD;
                 break;
                 case 2:
                 RookSpawn();
-                spawnCD=4.0f;
+                spawnCD=spawnRecastCD;
                 break;
                 case 3:
                 PawnSpawn();
-                spawnCD=4.0f;
+                spawnCD=spawnRecastCD;
                 break;
             }
             spawnavailable=false;
@@ -329,18 +366,61 @@ void OnTriggerEnter(Collider other)
     if(other.gameObject.tag=="white"){
             Debug.Log("AI hit ");
             Destroy(other.gameObject);
+            GameObject cloneB = Instantiate(Effect, transform.position, transform.rotation);
+            Destroy(cloneB,1f);
             LossHP(1);
         }
+    if(other.gameObject.tag == "Upgrade"){
+        
+        CooldownUpgrade();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "HP"){
+        AddHP(1);
+        Destroy(other.gameObject);
+    }
 }
 
 public void LossHP(int hp){
     Health-=hp;
-    hpBar.fillAmount = (float)Health/2.0f;
+    hpBar.fillAmount = (float)Health/3.0f;
 }
 public void AddHP(int HP){
     Health+=HP;
+    if(Health>3){
+        Health=3;
+    }
+    hpBar.fillAmount = (float)Health/3.0f;
 }
-   
+public void CooldownUpgrade(){
+    if(CooldownBuffTimes<1){
+    
+        CooldownBuffTimes++;
+pawnRecastCD*=0.8f;
+rookRecastCD*=0.8f;
+bishopRecastCD*=0.8f;
+knightRecastCD*=0.8f;
+CooldownBuffCD=0f;
+spawnRecastCD=2.0f;
+CooldownBuffEffect.SetActive(true);
+CooldownBuffIcon.SetActive(true);
+    }
+}
+
+public void CooldownDegrade(){
+    pawnRecastCD=pawnOriginalCastCD;
+rookRecastCD=rookOriginalCastCD;
+bishopRecastCD=bishopOriginalCastCD;
+knightRecastCD=knightOriginalCastCD;
+CooldownBuffEffect.SetActive(false);
+CooldownBuffIcon.SetActive(false);
+spawnRecastCD=4.0f;
+CooldownBuffCD=30f;
+CooldownBuffTimes--;
+}
+public void LightingOn(){
+    lighting=true;
+}
 
     
 }
