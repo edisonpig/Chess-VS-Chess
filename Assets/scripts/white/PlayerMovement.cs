@@ -99,6 +99,8 @@ public class PlayerMovement : MonoBehaviour
             lightingCD-=Time.deltaTime;
         }
         if(lightingCD<0){
+            lightingEffect.SetActive(false);
+            LightingIcon.SetActive(false);
             lighting=false;
             lightingCD=20f;
         }
@@ -423,6 +425,8 @@ CooldownBuffTimes--;
 }
 
 public void LightingOn(){
+    lightingEffect.SetActive(true);
+    LightingIcon.SetActive(true);
     lighting=true;
 }
 

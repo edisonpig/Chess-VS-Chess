@@ -541,6 +541,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818394526, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 880222235, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -554,17 +558,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1010509734}
     - target: {fileID: 1767565336, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
-      propertyPath: BuffIcon
+      propertyPath: LightingIcon
       value: 
       objectReference: {fileID: 1432908128}
-    - target: {fileID: 1767565336, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
-      propertyPath: BuffEffect
-      value: 
-      objectReference: {fileID: 880222235}
     - target: {fileID: 1767565336, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
       propertyPath: PlayerWinText
       value: 
       objectReference: {fileID: 693331889}
+    - target: {fileID: 1767565336, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
+      propertyPath: CooldownBuffIcon
+      value: 
+      objectReference: {fileID: 2118579959}
     - target: {fileID: 6621170088952228927, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1323,10 +1327,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 126499422}
     - target: {fileID: 1155320621, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
-      propertyPath: BuffIcon
-      value: 
-      objectReference: {fileID: 953434620}
-    - target: {fileID: 1155320621, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
       propertyPath: AIWinText
       value: 
       objectReference: {fileID: 1948196264}
@@ -1355,6 +1355,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 238458808}
     - target: {fileID: 1155320621, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
+      propertyPath: LightingIcon
+      value: 
+      objectReference: {fileID: 953434620}
+    - target: {fileID: 1155320621, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
       propertyPath: bishopImageCD
       value: 
       objectReference: {fileID: 963533696}
@@ -1362,7 +1366,15 @@ PrefabInstance:
       propertyPath: knightImageCD
       value: 
       objectReference: {fileID: 905769921}
+    - target: {fileID: 1155320621, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
+      propertyPath: CooldownBuffIcon
+      value: 
+      objectReference: {fileID: 1213594058}
     - target: {fileID: 1406783038, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503510943, guid: ac68c4a7a0ceeff44bbb6e7034cfcc0e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2280,11 +2292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869029491}
   m_CullTransparentMesh: 1
---- !u!1 &880222235 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 880222235, guid: ab61270e815cda04c972b5737a6bdbb4, type: 3}
-  m_PrefabInstance: {fileID: 282781128}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &884387176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &953434621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3308,7 +3315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1213594059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4211,7 +4218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1432908129
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5131,7 +5138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2118579960
 RectTransform:
   m_ObjectHideFlags: 0

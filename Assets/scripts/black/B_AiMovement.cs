@@ -96,6 +96,8 @@ public float spawnRecastCD = 4.0f;
             lightingCD-=Time.deltaTime;
         }
         if(lightingCD<0){
+            lightingEffect.SetActive(false);
+    LightingIcon.SetActive(false);
             lighting=false;
             lightingCD=20f;
         }
@@ -419,6 +421,9 @@ CooldownBuffCD=30f;
 CooldownBuffTimes--;
 }
 public void LightingOn(){
+    lightingEffect.SetActive(true);
+    LightingIcon.SetActive(true);
+    lighting=true;
     lighting=true;
 }
 
