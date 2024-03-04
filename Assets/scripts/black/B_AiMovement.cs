@@ -13,7 +13,7 @@ public class B_AiMovement : MonoBehaviour
 
     public static int Health = 3;
 
-    public float moveCD = 4f;
+    public float moveCD = 3f;
     public bool movementOnGoing = true;
     public Vector3 movement;
     public Vector3 desiredPosition;
@@ -24,8 +24,8 @@ public class B_AiMovement : MonoBehaviour
 [Header("Chess")]
 public bool spawnavailable =false;
 
-public float spawnCD = 4.0f;
-public float spawnRecastCD = 4.0f;
+public float spawnCD = 2.0f;
+public float spawnRecastCD = 2.0f;
 
 
     [SerializeField] private GameObject Pawn=null;
@@ -97,7 +97,7 @@ public float spawnRecastCD = 4.0f;
         }
         if(lightingCD<0){
             lightingEffect.SetActive(false);
-    LightingIcon.SetActive(false);
+            LightingIcon.SetActive(false);
             lighting=false;
             lightingCD=20f;
         }
@@ -121,6 +121,10 @@ public float spawnRecastCD = 4.0f;
         
 if(movementOnGoing && moveCD<=0){
     int check = Random.Range(0,2);
+    if(transform.position.z==14)  check=0;
+        
+    else if(transform.position.z==0)  check=1;
+    
             if(check==0){
             movement = new Vector3(0,0,-2f);
         }else if(check==1){
@@ -135,7 +139,7 @@ if(movementOnGoing && moveCD<=0){
         }if(desiredPosition.z>14){
             desiredPosition.z=14;
         }
-        moveCD = 6f;
+        moveCD = 4f;
         }
         smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
          transform.position = smoothPosition;
@@ -176,17 +180,17 @@ if(movementOnGoing && moveCD<=0){
             if(spawnCD>=0){
                 spawnCD-= Time.deltaTime;
             }else if(spawnavailable){
-            int check = Random.Range(0,4);
+            int check = Random.Range(0,7);
             switch(check){
-                case 0:
+                case 0: case 4:
                 BishopSpawn();
                 spawnCD=spawnRecastCD;
                 break;
-                case 1:
+                case 1: case 5:
                 KnightSpawn();
                 spawnCD=spawnRecastCD;
                 break;
-                case 2:
+                case 2: case 6:
                 RookSpawn();
                 spawnCD=spawnRecastCD;
                 break;
