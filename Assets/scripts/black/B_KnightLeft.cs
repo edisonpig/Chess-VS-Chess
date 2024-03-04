@@ -126,6 +126,11 @@ if(transform.position.x<0){
         GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
         Destroy(other.gameObject);
     }
+    if(other.gameObject.tag=="Question"){
+        Debug.Log("lightning");
+        GameObject.Find("King B Variant").GetComponent<PlayerMovement>().QuestionOn();
+        Destroy(other.gameObject);
+    }
    
 }
 }

@@ -49,6 +49,11 @@ public class PawnMove : MonoBehaviour
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().LightingOn();
         Destroy(other.gameObject);
     }
+    if(other.gameObject.tag=="Question"){
+        Debug.Log("lightning");
+        GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
+        Destroy(other.gameObject);
+    }
         
 
 

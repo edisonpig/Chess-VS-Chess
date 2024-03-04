@@ -20,6 +20,7 @@ public class KnightRight : MonoBehaviour
     [SerializeField] private GameObject CooldownBuffadd;
     [SerializeField] private GameObject HPadd;
     [SerializeField] private GameObject Lightningadd;
+    [SerializeField] private GameObject Questionadd;
 
     
     
@@ -120,13 +121,15 @@ if(transform.position.x>=14){
             Destroy(other.gameObject);
             GameObject cloneW = Instantiate(Effect, transform.position, transform.rotation);
             Destroy(cloneW,1f);
-            int check = Random.Range(0,10);
+            int check = Random.Range(0,13);
             if(check<2){
                 Instantiate(CooldownBuffadd, new Vector3((float)Math.Round((double)transform.position.x,0),0.91f,(float)Math.Round((double)transform.position.z,0)), transform.rotation);
             }else if(check<4){
                 Instantiate(HPadd, new Vector3((float)Math.Round((double)transform.position.x,0),0.91f,(float)Math.Round((double)transform.position.z,0)), transform.rotation);
             }else if(check<6){
                 Instantiate(Lightningadd, new Vector3((float)Math.Round((double)transform.position.x,0),0.91f,(float)Math.Round((double)transform.position.z,0)), Quaternion.Euler(90,0,0));
+            }else if(check<8){
+                Instantiate(Questionadd, new Vector3((float)Math.Round((double)transform.position.x,0),0.91f,(float)Math.Round((double)transform.position.z,0)), transform.rotation);
             }
             Destroy(gameObject);
         }
@@ -143,6 +146,11 @@ if(transform.position.x>=14){
     if(other.gameObject.tag == "Lightning"){
         Debug.Log("lightning");
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().LightingOn();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag=="Question"){
+        Debug.Log("lightning");
+        GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
         Destroy(other.gameObject);
     }
     

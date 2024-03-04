@@ -385,6 +385,16 @@ void OnTriggerEnter(Collider other)
         AddHP(1);
         Destroy(other.gameObject);
     }
+    if(other.gameObject.tag == "Lightning"){
+        Debug.Log("lightning");
+        LightingOn();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag=="Question"){
+        Debug.Log("lightning");
+        QuestionOn();
+        Destroy(other.gameObject);
+    }
 }
 
 public void LossHP(int hp){
@@ -430,6 +440,8 @@ public void LightingOn(){
     lighting=true;
     lighting=true;
 }
-
+public void QuestionOn(){
+    Debug.Log("random ai");
+}
     
 }
