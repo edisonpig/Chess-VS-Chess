@@ -15,6 +15,7 @@ public class B_KnightRight : MonoBehaviour
     public int CountTimes = 0;
 
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject KnightRightPlayer;
 
     public bool arrivePoint = true;
 
@@ -118,10 +119,17 @@ if(transform.position.x<0){
         GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
         Destroy(other.gameObject);
     }
-    if(other.gameObject.tag=="Question"){
-        Debug.Log("lightning");
-        GameObject.Find("King B Variant").GetComponent<PlayerMovement>().QuestionOn();
-        Destroy(other.gameObject);
+    
+    if(other.gameObject.tag=="Curse"){
+         rb.velocity = Vector3.zero;
+        //transform.position = Vector3.MoveTowards(transform.position,other.gameObject.transform.position,1.4f*Time.deltaTime);
+        while (other.gameObject.transform.position !=transform.position){
+            transform.Translate((other.gameObject.transform.position.x-transform.position.x)*0.1f,0,(other.gameObject.transform.position.z-transform.position.z)*0.1f);
+        }
+         Instantiate(KnightRightPlayer,transform.position,transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+
     }
    
 }

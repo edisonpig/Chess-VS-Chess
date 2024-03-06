@@ -12,6 +12,7 @@ public class B_RookMove : MonoBehaviour
     public Vector3 movement;
 
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject RookMovePlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class B_RookMove : MonoBehaviour
                 movement = new Vector3(transform.position.x-2f,transform.position.y,transform.position.z);
 
             
-            if(movement.x<0){
+            if(transform.position.x<0){
                 Destroy(gameObject);
             
             }
@@ -61,10 +62,17 @@ public class B_RookMove : MonoBehaviour
         GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
         Destroy(other.gameObject);
     }
-    if(other.gameObject.tag=="Question"){
-        Debug.Log("lightning");
-        GameObject.Find("King B Variant").GetComponent<PlayerMovement>().QuestionOn();
-        Destroy(other.gameObject);
+    
+    if(other.gameObject.tag=="Curse"){
+         rb.velocity = Vector3.zero;
+        //transform.position = Vector3.MoveTowards(transform.position,other.gameObject.transform.position,1.4f*Time.deltaTime);
+        while (other.gameObject.transform.position !=transform.position){
+            transform.Translate((other.gameObject.transform.position.x-transform.position.x)*0.1f,0,(other.gameObject.transform.position.z-transform.position.z)*0.1f);
+        }
+         Instantiate(RookMovePlayer,transform.position,transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+
     }
    
 }

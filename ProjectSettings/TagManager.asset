@@ -13,6 +13,7 @@ TagManager:
   - hourglass
   - Lightning
   - Question
+  - Curse
   layers:
   - Default
   - TransparentFX

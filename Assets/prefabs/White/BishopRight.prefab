@@ -131,3 +131,4 @@ MonoBehaviour:
   HPadd: {fileID: 5171115804453267747, guid: 7eeef2f585bbf1346973e2f02babfd0a, type: 3}
   Lightningadd: {fileID: 7266286126213867744, guid: e38aad67ce56b8648be840642b810314, type: 3}
   Questionadd: {fileID: 1805672705801053371, guid: 188d978e59cb27e42a941f869609185e, type: 3}
+  BishopRightEnemy: {fileID: 5578443071429317111, guid: e320606cbc3259e49b8856618bfc184c, type: 3}

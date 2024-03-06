@@ -22,6 +22,8 @@ public class KnightRight : MonoBehaviour
     [SerializeField] private GameObject Lightningadd;
     [SerializeField] private GameObject Questionadd;
 
+    [SerializeField] private GameObject KnightRightEnemy;
+
     
     
 
@@ -134,29 +136,39 @@ if(transform.position.x>=14){
             Destroy(gameObject);
         }
         if(other.gameObject.tag == "hourglass"){
-            Debug.Log("hourglass cd buff");
+            
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().CooldownUpgrade();
         Destroy(other.gameObject);
     }
     if(other.gameObject.tag == "HP"){
-        Debug.Log("addhp");
+        
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().AddHP(1);
         Destroy(other.gameObject);
     }
     if(other.gameObject.tag == "Lightning"){
-        Debug.Log("lightning");
+        
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().LightingOn();
         Destroy(other.gameObject);
     }
-    if(other.gameObject.tag=="Question"){
-        Debug.Log("lightning");
-        GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
-        Destroy(other.gameObject);
+    
+if(other.gameObject.tag=="Curse"){
+         rb.velocity = Vector3.zero;
+        //transform.position = Vector3.MoveTowards(transform.position,other.gameObject.transform.position,1.4f*Time.deltaTime);
+        while (other.gameObject.transform.position !=transform.position){
+            transform.Translate((other.gameObject.transform.position.x-transform.position.x)*0.1f,0,(other.gameObject.transform.position.z-transform.position.z)*0.1f);
+        }
+         Instantiate(KnightRightEnemy,transform.position,transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+
     }
+
+
+}
+
     
         
 
 
 }
    
-}

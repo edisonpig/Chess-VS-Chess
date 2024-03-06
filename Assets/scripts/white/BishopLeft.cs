@@ -20,6 +20,7 @@ public class BishopLeft : MonoBehaviour
     [SerializeField] private GameObject HPadd;
     [SerializeField] private GameObject Lightningadd;
     [SerializeField] private GameObject Questionadd;
+    [SerializeField] private GameObject BishopLeftEnemy;
 
     
     // Start is called before the first frame update
@@ -125,13 +126,22 @@ if(transform.position.x>=14){
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().LightingOn();
         Destroy(other.gameObject);
     }
-    if(other.gameObject.tag=="Question"){
-        Debug.Log("lightning");
-        GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
-        Destroy(other.gameObject);
-    }
     
-        
+    if(other.gameObject.tag=="Curse"){
+         rb.velocity = Vector3.zero;
+        //transform.position = Vector3.MoveTowards(transform.position,other.gameObject.transform.position,1.4f*Time.deltaTime);
+        while (other.gameObject.transform.position !=transform.position){
+            transform.Translate((other.gameObject.transform.position.x-transform.position.x)*0.1f,0,(other.gameObject.transform.position.z-transform.position.z)*0.1f);
+        }
+         Instantiate(BishopLeftEnemy,transform.position,transform.rotation);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+
     }
+
+
+}
+
+    
 
 }
