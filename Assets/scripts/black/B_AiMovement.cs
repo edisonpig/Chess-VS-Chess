@@ -24,8 +24,8 @@ public class B_AiMovement : MonoBehaviour
 [Header("Chess")]
 public bool spawnavailable =false;
 
-public float spawnCD = 2.0f;
-public float spawnRecastCD = 2.0f;
+public float spawnCD = 1.0f;
+public float spawnRecastCD = 1.0f;
 
 
     [SerializeField] private GameObject Pawn=null;

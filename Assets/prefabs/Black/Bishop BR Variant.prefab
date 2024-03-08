@@ -121,3 +121,4 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   arrivePoint: 1
   rb: {fileID: 6832190240682564552}
+  BishopRightPlayer: {fileID: 2588360838490303550, guid: 2949c95d71d5f77458c0b3f3cb6c099a, type: 3}

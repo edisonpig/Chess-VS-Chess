@@ -120,4 +120,5 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   CountTimes: 0
   rb: {fileID: 3854582266175553864}
+  KnightRightPlayer: {fileID: 1779845389252973779, guid: cca906b29d4d384499c7bcd452ebe52d, type: 3}
   arrivePoint: 1

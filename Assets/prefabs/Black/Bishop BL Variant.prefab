@@ -122,3 +122,4 @@ MonoBehaviour:
   arrivePoint: 1
   wallCheck: 1
   rb: {fileID: 1110233270063593610}
+  BishopLeftPlayer: {fileID: 2588360838490303550, guid: 6e11407a9b1e43843a547d70b00e652c, type: 3}

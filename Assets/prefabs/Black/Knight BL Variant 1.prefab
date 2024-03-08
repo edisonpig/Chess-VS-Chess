@@ -121,3 +121,4 @@ MonoBehaviour:
   CountTimes: 1
   arrivePoint: 1
   rb: {fileID: 8885593880042224909}
+  KnightLeftPlayer: {fileID: 1779845389252973779, guid: 3f9473157f2dac84b835133acd396739, type: 3}

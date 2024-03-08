@@ -43,7 +43,17 @@ public class B_PawnMove : MonoBehaviour
         GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
         Destroy(other.gameObject);
     }
-    
+    if(other.gameObject.tag=="Question"){
+        Debug.Log("lightning");
+        GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
+        Destroy(other.gameObject);
+    }
+    if(other.gameObject.tag == "Skull"){
+        Debug.Log("Skull");
+
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
    
 }
 }

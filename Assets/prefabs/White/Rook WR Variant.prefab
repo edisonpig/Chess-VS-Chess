@@ -128,4 +128,5 @@ MonoBehaviour:
   HPadd: {fileID: 5171115804453267747, guid: 7eeef2f585bbf1346973e2f02babfd0a, type: 3}
   Lightningadd: {fileID: 7266286126213867744, guid: e38aad67ce56b8648be840642b810314, type: 3}
   Questionadd: {fileID: 1805672705801053371, guid: 188d978e59cb27e42a941f869609185e, type: 3}
+  Skulladd: {fileID: 8006414215019156037, guid: 75704a9bad0529841823cbb41276dd55, type: 3}
   RookMoveEnemy: {fileID: 3907835099618922730, guid: 318ee41cba81d2a44871edbcb3f9828e, type: 3}

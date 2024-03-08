@@ -54,6 +54,12 @@ public class PawnMove : MonoBehaviour
         GameObject.Find("King W Variant").GetComponent<PlayerMovement>().QuestionOn();
         Destroy(other.gameObject);
     }
+    if(other.gameObject.tag == "Skull"){
+        Debug.Log("Skull");
+
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
         
 
 

@@ -119,3 +119,4 @@ MonoBehaviour:
   timer: 0
   movement: {x: 0, y: 0, z: 0}
   rb: {fileID: 6803202538947019613}
+  RookMovePlayer: {fileID: 4613461148373130560, guid: a23363599a17e544a8a9be1a74a87320, type: 3}

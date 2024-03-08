@@ -120,6 +120,12 @@ if(transform.position.x<0){
         GameObject.Find("King B Variant").GetComponent<B_AiMovement>().LightingOn();
         Destroy(other.gameObject);
     }
+    if(other.gameObject.tag == "Skull"){
+        Debug.Log("Skull");
+
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
     
     if(other.gameObject.tag=="Curse"){
          rb.velocity = Vector3.zero;
@@ -132,6 +138,16 @@ if(transform.position.x<0){
             Destroy(gameObject);
 
     }
-   
+   if(other.gameObject.tag=="Split"){
+        rb.velocity = Vector3.zero;
+            Vector3 spawnPt1 = transform.position + new Vector3(2,0,2);
+            Vector3 spawnPt2 = transform.position + new Vector3(2,0,-2);
+
+        Instantiate(gameObject,spawnPt1,transform.rotation);
+        Instantiate(gameObject,spawnPt2,transform.rotation);
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
+
 }
 }
