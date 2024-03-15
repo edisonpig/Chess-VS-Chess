@@ -155,19 +155,19 @@ if(movementOnGoing){
 
     private void PlayerSpawn(){
 
-            if(Input.GetKeyDown(KeyCode.Q)){
+            if(Input.GetKeyDown(KeyCode.I)){
                 BishopSpawn();
             }
             
-             if(Input.GetKeyDown(KeyCode.W)){
+             if(Input.GetKeyDown(KeyCode.O)){
                 KnightSpawn();
 
             }
-             if(Input.GetKeyDown(KeyCode.E)){
+             if(Input.GetKeyDown(KeyCode.P)){
                 RookSpawn();
                 
             }
-             if(Input.GetKeyDown(KeyCode.Space)){
+             if(Input.GetKeyDown(KeyCode.L)){
                 PawnSpawn();
                 
             }

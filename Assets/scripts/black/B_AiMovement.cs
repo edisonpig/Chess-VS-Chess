@@ -11,6 +11,8 @@ public class B_AiMovement : MonoBehaviour
 {
 [Header("Player")]
 
+    public bool BPlayer2 = false;
+
     public static int Health = 3;
 
     public float moveCD = 3f;
@@ -76,6 +78,7 @@ public float spawnRecastCD = 1.0f;
     void Start()
     {
         desiredPosition = transform.position;
+        BPlayer2 = GameObject.Find("GameManager").GetComponent<gameManagement>().Player2;
     }
 
     // Update is called once per frame
@@ -118,7 +121,7 @@ public float spawnRecastCD = 1.0f;
 }
 
     private void PlayerMove(){
-        
+        if(!BPlayer2){
 if(movementOnGoing && moveCD<=0){
     int check = Random.Range(0,2);
     if(transform.position.z==14)  check=0;
@@ -140,6 +143,25 @@ if(movementOnGoing && moveCD<=0){
             desiredPosition.z=14;
         }
         moveCD = 4f;
+        }
+        }else{
+            if(movementOnGoing){
+            if(Input.GetKeyDown(KeyCode.A)){
+            movement = new Vector3(0,0,-2f);
+        }if(Input.GetKeyDown(KeyCode.D)){
+            movement = new Vector3(0,0,2f);
+        }
+        movementOnGoing=false;
+        desiredPosition = transform.position + movement;
+        
+        
+        if(desiredPosition.z<0){
+            desiredPosition.z=0;
+        }if(desiredPosition.z>14){
+            desiredPosition.z=14;
+        }
+        
+        }
         }
         smoothPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
          transform.position = smoothPosition;
@@ -177,6 +199,7 @@ if(movementOnGoing && moveCD<=0){
                 PawnSpawn();
                 
             }*/ 
+            if(!BPlayer2){
             if(spawnCD>=0){
                 spawnCD-= Time.deltaTime;
             }else if(spawnavailable){
@@ -203,6 +226,24 @@ if(movementOnGoing && moveCD<=0){
             }else{
                 spawnavailable=true;
             
+            }
+            }else{
+                if(Input.GetKeyDown(KeyCode.D)){
+                BishopSpawn();
+            }
+            
+             if(Input.GetKeyDown(KeyCode.F)){
+                KnightSpawn();
+
+            }
+             if(Input.GetKeyDown(KeyCode.G)){
+                RookSpawn();
+                
+            }
+             if(Input.GetKeyDown(KeyCode.C)){
+                PawnSpawn();
+                
+            }
             }
             }
 
